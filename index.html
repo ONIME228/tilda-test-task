@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+
+<body>
+    <style>
+        div {
+            /* position: relative; */
+        }
+
+        .cart {
+            width: 50px;
+            height: 50px;
+            background-image: url('./src/shop_bug.svg');
+            cursor: pointer;
+            margin-left: auto;
+            /* Animation */
+            animation-name: bounce;
+            animation-duration: 2s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+        }
+
+        .cart-state {
+            /* position: absolute; */
+            width: 28px;
+            /* left: 0; */
+            transform: translate(38%, 60%);
+        }
+
+        section {
+            margin-top: 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-tile {
+            height: 300px;
+            width: 200px;
+            background-color: red;
+        }
+
+        .product-tile_img {
+            width: 100%;
+        }
+
+        img {
+            display: block;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1, 0.9);
+            }
+
+            50% {
+                transform: scale(1, 1);
+            }
+
+            100% {
+                transform: scale(1, 0.9);
+            }
+        }
+    </style>
+
+    <header>
+        <nav>
+            <div class="cart">
+                <!-- <img src="./src//shop_bug.svg" width="50px"> -->
+                <img class="cart-state" src="./src//cart_state_empty.svg">
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article class="product-tile">
+                <img class="product-tile_img" src="./src/cats hat.jpeg">
+                <h3 class="product-tile_description">Шапочка для кота "Мышь"</h3>
+                <div>
+                    <span class="product-tile_price"> 12</span>
+                    <div> В корзину</div>
+                </div>
+
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
