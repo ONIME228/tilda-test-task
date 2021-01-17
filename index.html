@@ -10,8 +10,8 @@
 
 <body>
     <style>
-        div {
-            /* position: relative; */
+        header {
+            position: relative;
         }
 
         .cart {
@@ -34,6 +34,20 @@
             transform: translate(38%, 60%);
         }
 
+        .cart-counter {
+            display: block;
+            width: 15px;
+            height: 15px;
+            background-color: antiquewhite;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+        }
+
         section {
             margin-top: 10%;
             display: flex;
@@ -41,13 +55,70 @@
         }
 
         .product-tile {
-            height: 300px;
-            width: 200px;
+            height: 200px;
+            width: 300px;
             background-color: red;
+            background-image: url('./src/cats\ hat.jpeg');
+            background-size: cover;
+            border-radius: 8px;
         }
+
+        .product-tile:hover>.product-tile_menu {
+            display: flex;
+        }
+
+        .product-tile_menu {
+            width: 50%;
+            height: 100%;
+            opacity: .8;
+            background-color: white;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px 0 0 8px;
+            align-items: center;
+        }
+
+        .product-tile_description {
+            margin: 0;
+            padding: 20px 10px;
+            text-align: right;
+        }
+
+        /* .product-tile:hover {
+            opacity: .8;
+        } */
 
         .product-tile_img {
             width: 100%;
+        }
+
+        .product-tile_footer {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .product-tile_add-to-cart {
+            border: none;
+            width: 96%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 8px;
+            background-color: antiquewhite;
+            outline-color: #f9c886;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .product-tile_price {
+            font-size: 30px;
+            text-align: end;
+        }
+
+        .product-tile_add-to-cart_svg {
+            width: 30px;
         }
 
         img {
@@ -75,21 +146,31 @@
                 <!-- <img src="./src//shop_bug.svg" width="50px"> -->
                 <img class="cart-state" src="./src//cart_state_empty.svg">
             </div>
+            <span class='cart-counter'>
+                1
+            </span>
         </nav>
     </header>
     <main>
         <section>
             <article class="product-tile">
-                <img class="product-tile_img" src="./src/cats hat.jpeg">
-                <h3 class="product-tile_description">Шапочка для кота "Мышь"</h3>
-                <div>
-                    <span class="product-tile_price"> 12</span>
-                    <div> В корзину</div>
+                <div class="product-tile_menu">
+                    <h3 class="product-tile_description">Шапочка для кота "Мышь"</h3>
+                    <!-- <div class="product-tile_footer"> -->
+                    <span class="product-tile_price"> 12 &#8364;</span>
+                    <button class="product-tile_add-to-cart">
+                        <img class="product-tile_add-to-cart_svg" src="./src/shop_bug-prev.svg">
+                        <span> В корзину </span>
+                    </button>
+                    <!-- </div> -->
+
                 </div>
+                <!-- <img class="product-tile_img" src="./src/cats hat.jpeg"> -->
 
             </article>
         </section>
     </main>
+
 </body>
 
 </html>
