@@ -24,6 +24,11 @@
             font-size: 20px;
         }
 
+        input,
+        label {
+            outline-color: #f9ca8a;
+        }
+
         main {
             display: flex;
             height: 100vh;
@@ -201,17 +206,17 @@
                 <h3>Товары</h3>
                 <article class="added-items">
                     <div class="product-tile">
-                        <img class="product-tile_img" src="../src/cats hat.jpeg">
+                        <img class="product-tile_img" src="../src/cats hat.jpeg" alt="cats hat product face">
                         <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 12 &#8364; </span>
                     </div>
                     <div class="product-tile">
-                        <img class="product-tile_img" src="../src/cats_hat_2.jpg">
+                        <img class="product-tile_img" src="../src/cats_hat_2.jpg" alt="cats hat product face">
                         <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 29 &#8364; </span>
                     </div>
                     <div class="product-tile">
-                        <img class="product-tile_img" src="../src/cats hat.jpeg">
+                        <img class="product-tile_img" src="../src/cats hat.jpeg" alt="cats hat product face">
                         <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 12 &#8364; </span>
                     </div>
@@ -227,11 +232,11 @@
                     <p> <b>Индекс:</b> 353900 </p>
                     <p> <b> Номер телефона:</b><br> 8-800-555-35-35 </p>
                     <article class="choose-address">
-                        <label>
+                        <label tabindex="1">
                             <input type="radio" name="billing-address">
                             Доставить <br> к указанному адресу
                         </label>
-                        <label>
+                        <label tabindex="1">
                             <input type="radio" name="billing-address" id="other-address">
                             Доставить <br> к другому адресу
                             <article class="other-address">
@@ -266,16 +271,16 @@
             <section class="group-payment-method" id="group-payment-method">
                 <h3> Способ оплаты </h3>
                 <div class="payment">
-                    <label>
+                    <label tabindex="1">
                         <input type="radio" name="kek" class="card-on-delivery">
                         Картой <br>
                         при получении
                     </label>
-                    <label>
+                    <label tabindex="1">
                         <input type="radio" name="kek" class="cash-on-delivery">
                         Наличными <br> при получении
                     </label>
-                    <label>
+                    <label tabindex="1">
                         <input type="radio" name="kek" class="card-online">
                         Картой онлайн
                         <div class="card-online-data">
@@ -306,14 +311,14 @@
                 <div>
                     <label>
                         Введите скидочный купон :
-                        <input type="text" name="Discount code">
+                        <input type="text" name="Discount code" tabindex="1">
                         <br>
-                        <input class="blink" type="button" value="Применить">
+                        <input class="blink" type="button" value="Применить" tabindex="1">
                     </label>
                     <form>
                         <label>
                             <span class="order-sum"> Сумма заказа : <b> 53 &#8364; </b> <br> </span>
-                            <input type="button" value="Оплатить">
+                            <input type="button" value="Оплатить" tabindex="1">
                         </label>
                     </form>
                 </div>
