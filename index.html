@@ -20,17 +20,14 @@
             background-image: url('./src/shop_bug.svg');
             cursor: pointer;
             margin-left: auto;
-            /* Animation */
             animation-name: bounce;
             animation-duration: 2s;
             animation-timing-function: ease;
             animation-iteration-count: infinite;
         }
 
-        .cart-state {
-            /* position: absolute; */
+        .cart-face {
             width: 28px;
-            /* left: 0; */
             transform: translate(38%, 60%);
         }
 
@@ -52,6 +49,10 @@
             margin-top: 10%;
             display: flex;
             justify-content: center;
+        }
+
+        .__hidden {
+            display: none;
         }
 
         .product-tile {
@@ -84,10 +85,6 @@
             padding: 20px 10px;
             text-align: right;
         }
-
-        /* .product-tile:hover {
-            opacity: .8;
-        } */
 
         .product-tile_img {
             width: 100%;
@@ -144,10 +141,9 @@
         <nav>
             <div class="cart">
                 <!-- <img src="./src//shop_bug.svg" width="50px"> -->
-                <img class="cart-state" src="./src//cart_state_empty.svg">
+                <img class="cart-face" src="./src//cart_state_empty.svg">
             </div>
-            <span class='cart-counter'>
-                1
+            <span class='cart-counter __hidden'>
             </span>
         </nav>
     </header>
@@ -170,7 +166,24 @@
             </article>
         </section>
     </main>
+    <script>
+        // Должен быть реализован через хранинище
+        let cartState = 0;
+        const cartCounter = document.querySelector('.cart-counter'),
+            cartFace = document.querySelector('.cart-face'),
+            addToCartButton = document.querySelector('.product-tile_add-to-cart'),
+            cartContainer = document.querySelector('.cart');
 
+        addToCartButton.addEventListener('click', () => {
+            if (cartState < 1) {
+                cartFace.src = './src/cart_state_filled.svg';
+                cartCounter.classList.remove('__hidden');
+            }
+            cartCounter.textContent = ++cartState;
+        });
+        cartContainer.addEventListener('click', () => location.pathname = '/pages/cart.html');
+
+    </script>
 </body>
 
 </html>

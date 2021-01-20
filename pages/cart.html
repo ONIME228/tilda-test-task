@@ -11,18 +11,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* margin-left: 10px; */
         }
 
         .added-items {
             width: 90%;
             height: 80%;
-            background-color: antiquewhite;
             overflow: scroll;
         }
 
         body {
             overflow: hidden;
+            font-size: 20px;
         }
 
         main {
@@ -35,14 +34,14 @@
             display: flex;
             flex-direction: column;
             width: 50%;
-            margin: 10px 0 10px 10px;
+            margin: 10px 5px;
         }
 
         section {
             border: 1px solid white;
             width: 100%;
-            height: 50%;
-            background-color: aliceblue;
+            height: 49%;
+            border: 4px solid aliceblue;
             border-radius: 16px;
             transition: all 0.5s ease-out;
             perspective: 1000px;
@@ -50,14 +49,37 @@
 
         h3 {
             margin: 10px 0 10px 75px;
+        }
 
+        label {
+            font-size: 20px;
         }
 
         p,
         label,
-        form,
+        [value="Оплатить"] {
+            margin: 5px 0 0 40px;
+        }
+
         [type="button"] {
-            margin: 5px 0 0 20px;
+            border: 1px solid white;
+            background-color: white;
+            border-radius: 6px;
+            padding: 5px;
+            text-transform: uppercase;
+            outline-color: #f9ca8a;
+        }
+
+        [type="text"] {
+            font-size: 15px;
+        }
+
+        [name="Discount code"] {
+            font-size: 20px;
+        }
+
+        [value="Оплатить"] {
+            font-size: 25px
         }
 
         .payment,
@@ -77,6 +99,15 @@
         .card-online-data {
             display: none;
             flex-direction: column;
+            height: 100%;
+            width: 25vw;
+            background-image: url('../src/address-background.jpg');
+            background-size: cover;
+            position: absolute;
+            right: 0;
+            top: 0;
+            align-items: center;
+            border-radius: 0px 8px 8px 0;
         }
 
         #other-address:checked+br+.other-address {
@@ -87,33 +118,79 @@
         .other-address {
             display: none;
             flex-direction: column;
-            height: 50vh;
+            height: 100%;
             width: 25vw;
-            /* background-color: antiquewhite; */
             background-image: url('../src/address-background.jpg');
             background-size: cover;
             position: absolute;
             right: 0;
             top: 0;
             align-items: center;
+            border-radius: 0px 8px 8px 0;
         }
 
         .group-delivery {
             position: relative;
-
         }
 
-        .product-tile {}
+        #group-products,
+        #group-payment-method {
+            margin-bottom: 5px;
+        }
 
         .product-tile_img {
             width: 200px;
+            border-radius: 8px;
+        }
+
+        .product-tile_price {
+            display: block;
+            margin-right: 10px;
         }
 
         .order-sum {
             font-size: 30px;
         }
 
-        .group-payment-method {}
+        section:hover {
+            background-color: antiquewhite;
+        }
+
+        .product-tile {
+            border: 2px solid white;
+            border-radius: 8px;
+            margin: 4px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blink {
+            animation: blink 3s linear infinite;
+            font-size: 20px;
+        }
+
+        #payment>div {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-around;
+        }
+
+        @keyframes blink {
+            0% {
+                color: #92c1ea;
+                ;
+            }
+
+            50% {
+                color: rgba(34, 34, 34, 0);
+            }
+
+            100% {
+                color: #92c1ea;
+            }
+        }
     </style>
 </head>
 
@@ -125,14 +202,17 @@
                 <article class="added-items">
                     <div class="product-tile">
                         <img class="product-tile_img" src="../src/cats hat.jpeg">
+                        <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 12 &#8364; </span>
                     </div>
                     <div class="product-tile">
                         <img class="product-tile_img" src="../src/cats_hat_2.jpg">
+                        <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 29 &#8364; </span>
                     </div>
                     <div class="product-tile">
                         <img class="product-tile_img" src="../src/cats hat.jpeg">
+                        <span class="product-tile_quantity"> 1 </span>
                         <span class="product-tile_price"> 12 &#8364; </span>
                     </div>
                 </article>
@@ -188,16 +268,18 @@
                 <div class="payment">
                     <label>
                         <input type="radio" name="kek" class="card-on-delivery">
-                        Картой при получении
+                        Картой <br>
+                        при получении
                     </label>
                     <label>
                         <input type="radio" name="kek" class="cash-on-delivery">
-                        Наличными при получении
+                        Наличными <br> при получении
                     </label>
                     <label>
                         <input type="radio" name="kek" class="card-online">
                         Картой онлайн
                         <div class="card-online-data">
+                            <h3 style="visibility:hidden"> Отступ </h3>
                             <label>
                                 Владелец карты <br>
                                 <input type="text">
@@ -221,23 +303,26 @@
             </section>
             <section class="payment" id="payment">
                 <h3> Расчет </h3>
-                <label>
-                    Введите скидочный купон :
-                    <input type="text" name="Discount code">
-                    <input type="button" value="Применить">
-                </label>
-                <form>
+                <div>
                     <label>
-                        <span class="order-sum"> Сумма заказа : <b> 53 &#8364; </b> <br> </span>
-                        <input type="button" value="Оплатить заказ">
+                        Введите скидочный купон :
+                        <input type="text" name="Discount code">
+                        <br>
+                        <input class="blink" type="button" value="Применить">
                     </label>
-                </form>
-
+                    <form>
+                        <label>
+                            <span class="order-sum"> Сумма заказа : <b> 53 &#8364; </b> <br> </span>
+                            <input type="button" value="Оплатить">
+                        </label>
+                    </form>
+                </div>
             </section>
         </div>
     </main>
     <script>
         const listOfTiles = document.querySelectorAll('section');
+        //Да простит меня бог за метод массива к нод листу
         listOfTiles.forEach(tile => {
             tile.addEventListener('mousemove', animateBlocks);
             tile.addEventListener('mouseleave', animateOnLeave);
